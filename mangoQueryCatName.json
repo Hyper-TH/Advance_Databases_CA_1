@@ -1,0 +1,13 @@
+{
+    "selector": {
+       "catName": "Jury"
+    },
+    "fields": [
+       "partName",
+       "voteMode"
+    ],
+    "sort": [
+       "catName"
+    ],
+    "use_index": "catName-json-index"
+}
