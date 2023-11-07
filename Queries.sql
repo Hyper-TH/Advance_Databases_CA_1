@@ -27,20 +27,20 @@ GROUP BY partName;
 -- 3.For the 2013 and 2019 edition of the programme respectively, for each county, what was the
 -- total income earned from audience viewers in that county for each voting category?
 -- Include county names and year in output
-SELECT SUM(cost), dv.countyName, de.edYear
+SELECT SUM(cost), dv.countyName, de.edYear, voteMode 
 FROM FactVotes fv 
 JOIN DimViewers dv ON 
     fv.viewerID = dv.viewerID
 JOIN DimEdition de ON
 	fv.edID = de.edID
 WHERE de.edYear = 2013
-GROUP BY countyName
+GROUP BY countyName, voteMode
 UNION
-SELECT SUM(cost), dv.countyName, de.edYear
+SELECT SUM(cost), dv.countyName, de.edYear, voteMode
 FROM FactVotes fv 
 JOIN DimViewers dv ON 
     fv.viewerID = dv.viewerID 
 JOIN DimEdition de ON
 	fv.edID = de.edID
 WHERE de.edYear = 2019
-GROUP BY countyName;
+GROUP BY countyName, voteMode;
