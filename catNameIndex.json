@@ -1,0 +1,9 @@
+{
+   "index": {
+      "fields": [
+         "catName"
+      ]
+   },
+   "name": "catName-json-index",
+   "type": "json"
+}
