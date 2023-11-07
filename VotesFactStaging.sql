@@ -60,5 +60,9 @@ WHERE
 	e.edYear >= 2016 AND e.edYear <= 2022 AND 
 	e.voteMode IN ('TV', 'Phone') AND 
 	e.catName IN ('Audience');
-	
+
+UPDATE stage_votes e SET cost = (CAST(e.vote AS DECIMAL(18,5))) * 0
+WHERE e.catName IN ('Jury');
+
+
 SELECT * FROM stage_votes;
