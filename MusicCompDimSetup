@@ -29,7 +29,8 @@ DROP TABLE IF EXISTS DimViewerCategory;
     countyName VARCHAR(50) NOT NULL,
     PRIMARY KEY (viewerID)
  );
- 
+ 	
+
  CREATE TABLE FactVotes (
  	voteID INT(11) NOT NULL,
  	viewerID INT(11) NOT NULL,
@@ -45,18 +46,3 @@ DROP TABLE IF EXISTS DimViewerCategory;
  	CONSTRAINT FK_partID FOREIGN KEY (partID) REFERENCES DimParticipants,
  	CONSTRAINT FK_edID FOREIGN KEY (edID) REFERENCES DimEdition
  );
-
-
--- INSERT DATA FROM STAGES TO DIMS
-INSERT INTO DimEdition (edID, edYear, edPresenter)
-SELECT ed_sk, edYear, edPresenter FROM MusicCompDB.stage_edition;
-
-INSERT INTO DimParticipants (partID, partName, countyName)
-SELECT part_sk, partName, countyName FROM MusicCompDB.stage_participants; 
-
-INSERT INTO DimViewers (viewerID, ageGroupDesc, countyName)
-SELECT viewerId, ageGroupDesc, countyName FROM MusicCompDB.stage_viewer;
-
-INSERT INTO FactVotes (voteID, viewerID, edID, partID, catName, voteMode, vote, voteDate, cost)
-SELECT voteID, viewerID , edID, partID, catName, voteMode, vote, voteDate, cost FROM MusicCompDB.stage_votes; 
- 
