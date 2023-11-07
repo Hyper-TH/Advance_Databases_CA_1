@@ -1,3 +1,50 @@
+# Technologies used
+    - GitBash
+    - VSC 
+    - DBeaver
+    - Docker
+
+# What this folder contains
+
+## SQL to create the database (Star Schema) in MariaDB based on the dimensional model derived
+  - MusicCompDimSetup.sql
+
+## Code for ETL to populate database from the original data
+  - MusicCompStagingLoad.sql
+    - Stages all dims 
+  - VotesFactStaging.sql
+    - Stages the fact table (vote)
+  - loadToDims.sql
+    - Loads data from all stages to dims
+
+## SQL to implement the queries 
+  - Queries.sql
+
+## SQL to implement any indexes introduced to improve query performance
+  - indexQuery.sql
+    - Contains the script used to run MariaDB
+    - Contains the scripts used to check query performance
+    - Contains the script used to create an index
+
+## SQL needed to demonstrate the performance pre and post implementation of any indexes
+  - indexQuery.sql
+    - Contains the script used to run MariaDB
+    - Contains the scripts used to check query performance
+    - Contains the script used to create an index
+
+## Code needed to create and populate an equivalent CouchDB database (shell script)
+  - exportToJSON.sql
+    - SQL query used to export as JSON from DBeaver
+    - Contains the script used to import resulting JSON to couch DB
+  - fact_votes.json
+    - Exported JSON from query and DBeaver
+  
+## Code needed to implement a simple query against the equivalent of the fact table in this CouchDB
+  - catNameIndex.JSON
+    - Contains Mango Query to create an index
+  - mangoQueryCatName.JSON
+    - Query to find all Jury instances, displaying the participant name they voted for, their voting mode, sorted by category name
+
 # Initial Dataset Description
 
 A TV production company is interested in analyzing some statistics related to an annual music contest in Ireland.
@@ -6,6 +53,8 @@ now wishes to analyze trends related to the viewers’ activity over several yea
 using a relational database, document store or distributed column store to achieve this.
 
 The schema of the database the TV company current is shown below:
+
+![Sketch](assets/sourceDB.png)
 
 For each participant their name and county of residence is stored (or if the participant is a band, the county they
 where they formed the band). Consider the participant’s name to be unique inside the database.
@@ -22,6 +71,10 @@ Each vote is associated to a specific edition of the TV program (e.g. ‘2020’
 conducted in January. Since it is possible to vote only for the current edition, the year when the vote is
 expressed corresponds to the year of the edition.
 
-![Sketch](assets/sourceDB.png)
-
 Finally, for each edition of the programme, the name of the presenter is known.
+
+# Target Star Schema
+![Sketch](assets/FactVotesDiagram.drawio.png)
+
+# Fact Votes Diagram
+![Sketch](assets/FactVotes.png)
