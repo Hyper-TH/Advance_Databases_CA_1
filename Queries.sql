@@ -33,14 +33,5 @@ JOIN DimViewers dv ON
     fv.viewerID = dv.viewerID
 JOIN DimEdition de ON
 	fv.edID = de.edID
-WHERE de.edYear = 2013
-GROUP BY countyName, voteMode
-UNION
-SELECT SUM(cost), dv.countyName, de.edYear, voteMode
-FROM FactVotes fv 
-JOIN DimViewers dv ON 
-    fv.viewerID = dv.viewerID 
-JOIN DimEdition de ON
-	fv.edID = de.edID
-WHERE de.edYear = 2019
+WHERE de.edYear = 2013 or de.edYear = 2019
 GROUP BY countyName, voteMode;
