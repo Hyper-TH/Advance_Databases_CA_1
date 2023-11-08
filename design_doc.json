@@ -1,0 +1,28 @@
+{
+    "id": "_design/2f70c8a5df20aad168865713264a511226d9e91b",
+    "key": "_design/2f70c8a5df20aad168865713264a511226d9e91b",
+    "value": {
+     "rev": "5-990add4a48d5d90a6190f278dea7687c"
+    },
+    "doc": {
+        "_id": "_design/2f70c8a5df20aad168865713264a511226d9e91b",
+        "_rev": "5-990add4a48d5d90a6190f278dea7687c",
+        "language": "query",
+        "views": {
+            "catName-json-index": {
+                "map": {
+                    "fields": {
+                        "catName": "asc"
+                    },
+                    "partial_filter_selector": {}
+                },
+                "reduce": "_count",
+                "options": {
+                    "def": {
+                        "fields": ["catName"]
+                    }
+                }
+            }
+        }
+    }
+}
