@@ -44,6 +44,8 @@
     - Contains Mango Query to create an index
   - mangoQueryCatName.JSON
     - Query to find all Jury instances, displaying the participant name they voted for, their voting mode, sorted by category name
+  - design_doc.json
+    - The design doc result when the query is ran
 
 # Initial Dataset Description
 
